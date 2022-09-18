@@ -1,5 +1,4 @@
 def main():
-    import utils # imports my customized utils module, with a test and timing function. https://GitHub.com/BBernYY/FancyCoding
     print("hello world!")
 
 
