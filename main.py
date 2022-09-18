@@ -4,7 +4,7 @@ import discord.utils
 from discord.ext import commands
 import json
 import os
-bot = commands.Bot(intents=discord.Intents.default(), command_prefix='!')
+bot = commands.Bot(intents=discord.Intents.all(), command_prefix='sus ')
 bot.remove_command('help')
 data = json.load(open("data.json"))
 def get_list(dictionary, key):
@@ -14,7 +14,7 @@ def get_list(dictionary, key):
   return output
 @bot.event
 async def on_ready():
-  print(f'startup at {datetime.now()}')
+  print(f'startup at {datetime.now()} as {bot.user}')
 @bot.command()
 async def help(ctx, command=None):
     if command:
@@ -26,5 +26,9 @@ async def help(ctx, command=None):
       embed.add_field(name="description", value="\n".join(get_list(data["commands"], "description")))
       embed.add_field(name="usage", value="\n".join(get_list(data["commands"], "usage")))
     await ctx.channel.send("I'm glad to help!", embed=embed)
+
+@bot.command()
+async def sus(ctx):
+  await ctx.channel.send('sus')
 # connect token
 bot.run(open('TOKEN.env').read())
